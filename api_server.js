@@ -34,9 +34,6 @@ app.use('/auth', auth_route)
 
 app.use('/home', home_feed)
 app.use('/trending', trending_feed)
-app.post('/register', (req, res) =>{
-  res.send(ack_msg);
-});
 app.post('/', (req, res) =>{
   res.send(ack_msg);
   console.log(req.body);
