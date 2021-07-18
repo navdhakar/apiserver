@@ -23,9 +23,9 @@ api_comms_data = {
     req_path:"home_feed",
 }
 
-const namespace = "[home_feed]";
+const namespace = "[home_feed]:";
 router.get('/home_feed', (req, res) =>{
-    console.log(namespace + ":request recieved");
+    console.log(namespace + "request recieved");
     
     if(req.headers['authorization']!==undefined||null){
         current_auth_check();  
