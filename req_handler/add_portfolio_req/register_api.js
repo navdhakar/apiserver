@@ -45,6 +45,8 @@ router.post('/add_portfolio', (req, res) =>{
           
           res.send(data);
           console.log(data._id);
+          console.log(data.name);
+          console.log(data.token_data);
           return data
         })
         .then((data) => {
