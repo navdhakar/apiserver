@@ -80,8 +80,11 @@ router.get('/home_feed', (req, res) =>{
         
         getData(proctor_home_uri + `/${subsection}`, req)
         .then(data => {
+          
           res.send(data); // JSON data parsed by `data.json()` call
         });
+        
+        
     }
 }); 
 module.exports = router;
