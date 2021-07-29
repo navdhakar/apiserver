@@ -18,7 +18,8 @@ var mailOptions = {
   from: 'navdeepdhkr@gmail.com',
   to: email,
   subject: 'Sending Email using Node.js',
-  text: email_auth_otp.toString()
+  text: email_auth_otp.toString(),
+  html:`<p>FOLIO Email verification OTP <h1>${email_auth_otp}</h1></p>`
 };
 console.log("completed up to here")
 transporter.sendMail(mailOptions, function(error, info){
