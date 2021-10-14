@@ -4,8 +4,8 @@ const cors = require('cors');
 const fetch = require('node-fetch');
 const email_verification = require('../../middleware/email_verification');
 const { response } = require('express');
-user_add_uri = "http://localhost:8002/auth/api/users";
-proctor_add_portfolio_uri = "http://127.0.0.1:8000/proctor_register";
+const user_add_uri = process.env.USER_ADD_URI;
+const proctor_add_portfolio_uri = process.env.PROCTOR_ADD_PORTFOLIO_URI;
 
 router.use(cors({
     origin: '*'
@@ -20,7 +20,8 @@ router.post('/add_portfolio', (req, res) =>{
     user_personel_data = {
         name:req.body.name,
         email:req.body.email,
-        password:req.body.password,   
+        password:req.body.password,
+        group:req.body.group   
     }
     console.log(namespace + user_personel_data.email);
     user_global_data = {
@@ -41,6 +42,8 @@ router.post('/add_portfolio', (req, res) =>{
 });
 
 router.post('/verify_email', (req, res) =>{
+console.log(user_add_uri);
+console.log(proctor_add_portfolio_uri);
 console.log(req.body.email_otp)
 sent_otp = req.body.email_otp;
 console.log("generated otp" + generated_otp)
@@ -64,7 +67,7 @@ if(generated_otp==req.body.email_otp){
     })
       .then((response) => response.json())
       .then((data) => {
-        
+        data.portfolio_url = user_global_data.portfolio_url
         res.send(data);
         console.log(data._id);
         console.log(data.name);

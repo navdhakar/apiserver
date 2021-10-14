@@ -7,6 +7,7 @@ const home_feed = require('./req_handler/feed_requests/home_feed');
 const trending_feed = require('./req_handler/feed_requests/trending')
 const register = require('./req_handler/add_portfolio_req/register_api')
 const view_requests = require('./req_handler/vote_view_request/view_requests')
+const profile_update = require('./response_handler/update_handler')
 app.use(cors({
     origin: '*'
 }));
@@ -35,6 +36,7 @@ app.use('/register', register)
 app.use('/home', home_feed)
 app.use('/trending', trending_feed)
 app.use('/views_reqs', view_requests)
+app.use('/api', profile_update)
 app.post('/', (req, res) =>{
   res.send(ack_msg);
   console.log(req.body);
