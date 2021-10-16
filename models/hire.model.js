@@ -11,6 +11,18 @@ const HireSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 50,
   },
+  email: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50,
+  },
+  contact_no: {
+    type: Number,
+    required: true,
+    minlength: 3,
+    maxlength: 50,
+  },
   project_title: {
     type: String,
     required: true,
@@ -66,6 +78,8 @@ const Hire = mongoose.model("Hire", HireSchema);
 function validateHire(Hire) {
   const schema = Joi.object({
     company_name: Joi.string().min(3).max(50).required(),
+    email: Joi.string().min(3).max(50).required(),
+    contact_no: Joi.number().min(3).max(50).required(),
     project_title: Joi.string().min(5).max(255).required().email(),
     project_description: Joi.string().min(3).max(1000).required(),
     technology_required: Joi.string().min(3).max(255).required(),
