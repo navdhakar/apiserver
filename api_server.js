@@ -46,4 +46,4 @@ app.post("/", (req, res) => {
   res.send(ack_msg);
   console.log(req.body);
 });
-app.listen(8002);
+app.listen(process.env.PORT || 8002);
