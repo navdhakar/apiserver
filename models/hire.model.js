@@ -40,7 +40,7 @@ const HireSchema = new mongoose.Schema({
   technology_required: {
     type: String,
     required: true,
-    minlength: 3,
+
     maxlength: 255,
   },
   time_limit: {
@@ -57,7 +57,13 @@ const HireSchema = new mongoose.Schema({
   },
   required_experience: {
     type: String,
-    required: false,
+
+    minlength: 3,
+    maxlength: 255,
+  },
+  service_required: {
+    type: String,
+    required: true,
     minlength: 3,
     maxlength: 255,
   },
@@ -82,10 +88,11 @@ function validateHire(Hire) {
     contact_no: Joi.number().min(3).max(50).required(),
     project_title: Joi.string().min(5).max(255).required().email(),
     project_description: Joi.string().min(3).max(1000).required(),
-    technology_required: Joi.string().min(3).max(255).required(),
+    technology_required: Joi.string().max(255).required(),
     time_limit: Joi.string().min(3).max(255).required(),
     budget: Joi.number().min(3).max(255).required(),
     required_experience: Joi.string().min(3).max(255).required(),
+    service_required: Joi.string().min(3).max(255).required(),
   });
 
   return schema.validate(Hire);

@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-const auth_route = require("../auth_library/index");
+const api_handler = require("../auth_library/index");
 // const home_feed = require("./req_handler/feed_requests/home_feed");
 // const trending_feed = require("./req_handler/feed_requests/trending");
 const register = require("./req_handler/add_portfolio_req/register_api");
@@ -34,9 +34,10 @@ fs.readFile("links.json", "utf8", (err, jsonString) => {
 ack_msg = {
   user: "on registration server",
 };
-app.use("/auth", auth_route);
+app.use("/auth", api_handler);
 app.use("/register", register);
-app.use("/hire", hire);
+app.use("/hire_api", api_handler);
+app.use("/work_api", api_handler);
 // app.use('/home', home_feed)
 // app.use('/trending', trending_feed)
 // app.use('/views_reqs', view_requests)
