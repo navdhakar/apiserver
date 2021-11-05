@@ -4,7 +4,7 @@
   "description": "",
   "main": "api_server.js",
   "scripts": {
-    "dev": "start api_server"
+    "start": "start api_server"
   },
   "author": "navdeep dhakar",
   "license": "ISC",
