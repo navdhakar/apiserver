@@ -51,4 +51,4 @@ app.post("/", (req, res) => {
   console.log(req.body);
 });
 //process.env.PORT ||
-app.listen(8002);
+app.listen(process.env.PORT || 8002);
