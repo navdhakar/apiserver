@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const usersRoute = require("./routes/user.route");
 const hireRoute = require("./routes/hire.route");
 const workRoute = require("./routes/work.route");
+const opportunityRoute = require("./routes/opportunity.route");
+
 const express = require("express");
 require("dotenv").config();
 const router = express.Router();
@@ -34,4 +36,6 @@ router.use(express.json());
 router.use("/register", usersRoute);
 router.use("/hire", hireRoute);
 router.use("/findwork", workRoute);
+router.use("/opportunity", opportunityRoute);
+
 module.exports = router;

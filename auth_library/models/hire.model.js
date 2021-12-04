@@ -28,14 +28,14 @@ const HireSchema = new mongoose.Schema({
     //required: true,
     minlength: 5,
     maxlength: 1000,
-    unique: true,
+    // unique: true,
   },
   project_description: {
     type: String,
     required: true,
     minlength: 5,
     maxlength: 1000,
-    unique: true,
+    // unique: true,
   },
   technology_required: {
     type: String,

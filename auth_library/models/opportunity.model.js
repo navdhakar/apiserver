@@ -4,7 +4,7 @@ const Joi = require("joi");
 const mongoose = require("mongoose");
 
 //simple schema
-const UserSchema = new mongoose.Schema({
+const OpportunutySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -15,13 +15,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 5,
-    maxlength: 255,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-    minlength: 3,
     maxlength: 255,
   },
   college_name: {
@@ -56,48 +49,32 @@ const UserSchema = new mongoose.Schema({
   //   minlength: 3,
   //   maxlength: 255,
   // },
-  github_profile: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 255,
-  },
-  profileImg: {
-    type: String,
-  },
-  skills: {
-    type: String,
-  },
-  rating: {
-    type: Number,
-    default: 1,
-  },
+  selected_project: { type: Array, default: [] },
   //give different access rights if admin or not
   isAdmin: Boolean,
 });
 
 //custom method to generate authToken
-UserSchema.methods.generateAuthToken = function () {
+OpportunutySchema.methods.generateAuthToken = function () {
   const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, config.get("myprivatekey")); //get the private key from the config file -> environment variable
   return token;
 };
 
-const User = mongoose.model("User", UserSchema);
+const ProjectSelected = mongoose.model("ProjectSelected", OpportunutySchema);
 
 //function to validate user
 function validateUser(user) {
   const schema = Joi.object({
     name: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().min(3).max(255).required(),
+
     college_year: Joi.string().max(255).required(),
     college_branch: Joi.string().max(255).required(),
     college_name: Joi.string().max(255).required(),
     // graduation_institute: Joi.string().min(3).max(255).required(),
     // dob: Joi.string().min(3).max(255).required(),
     // contact_no: Joi.string().min(3).max(255).required(),
-    github_profile: Joi.string().min(3).max(255).required(),
-    profileImg: Joi.string(),
+    // selected_project: Joi.string().min(3).max(255).required(),
 
     // group: Joi.string().min(3).max(255).required(),
   });
@@ -105,5 +82,5 @@ function validateUser(user) {
   return schema.validate(user);
 }
 
-exports.User = User;
+exports.ProjectSelected = ProjectSelected;
 exports.validate = validateUser;

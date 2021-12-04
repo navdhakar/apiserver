@@ -14,7 +14,8 @@ app.use(
     origin: "*",
   })
 );
-
+app.use(express.static("profile"));
+app.use("/", express.static("images"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 /*const fs = require("fs");
@@ -38,6 +39,9 @@ app.use("/auth", api_handler);
 app.use("/register", register);
 app.use("/hire_api", api_handler);
 app.use("/work_api", api_handler);
+app.use("/signup", api_handler);
+app.use("/students", api_handler);
+
 // app.use('/home', home_feed)
 // app.use('/trending', trending_feed)
 // app.use('/views_reqs', view_requests)
@@ -46,4 +50,5 @@ app.post("/", (req, res) => {
   res.send(ack_msg);
   console.log(req.body);
 });
-app.listen(process.env.PORT || 8002);
+//process.env.PORT ||
+app.listen(8002);
