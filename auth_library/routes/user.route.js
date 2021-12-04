@@ -76,7 +76,7 @@ router.post("/profile_upload", auth, upload.single("profileImg"), async (req, re
   const user = await User.findById(req.user._id).select("-password");
   // const name = user.name;
   const url = req.protocol + "://" + req.get("host");
-  user.profileImg = "https://codejet.herokuapp.com " + "/" + req.file.filename;
+  user.profileImg = "https://codejet.herokuapp.com" + "/" + req.file.filename;
   user.save();
   res.send({ message: "saved" });
 });
