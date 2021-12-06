@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.3.0",
     "fs": "^0.0.1-security",
+    "googleapis": "^92.0.0",
     "multer": "^1.4.3",
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.6.3",
