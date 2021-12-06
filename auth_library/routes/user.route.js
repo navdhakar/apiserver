@@ -4,7 +4,16 @@ const email_verification = require("../middleware/email_verification");
 const bcrypt = require("bcrypt");
 const { User, validate } = require("../models/user.model");
 const { ProjectSelected } = require("../models/opportunity.model");
+const config = require("config");
 
+require("dotenv").config();
+
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRTET_KEY,
+});
 const express = require("express");
 const router = express.Router();
 const fetch = require("node-fetch");
@@ -75,10 +84,16 @@ var upload = multer({
 router.post("/profile_upload", auth, upload.single("profileImg"), async (req, res, next) => {
   const user = await User.findById(req.user._id).select("-password");
   // const name = user.name;
-  const url = req.protocol + "://" + req.get("host");
-  user.profileImg = "https://codejet.herokuapp.com" + "/" + req.file.filename;
+  // console.log("picture");
+  // console.log(req.file.filepath);
+  // const file = req.file;
+  const result = await cloudinary.uploader.upload(req.file.path);
+  console.log(result);
+  // const url = req.protocol + "://" + req.get("host");
+  user.profileImg = result.secure_url;
+  user.cloudinaryID = result.public_id;
   user.save();
-  res.send({ message: "saved" });
+  res.send(result);
 });
 
 // router.get("/", (req, res, next) => {

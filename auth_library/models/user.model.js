@@ -65,6 +65,9 @@ const UserSchema = new mongoose.Schema({
   profileImg: {
     type: String,
   },
+  cloudinaryID: {
+    type: String,
+  },
   skills: {
     type: String,
   },
