@@ -42,9 +42,9 @@ async function email_verification(email) {
   sendEmail({
     from: "codejethq@gmail.com",
     to: email,
-    subject: "Sending Email using Node.js",
+    subject: "codeJET email verification OTP",
     text: email_auth_otp.toString(),
-    html: `<p>codeJET Email verification OTP <h1>${email_auth_otp}</h1></p>`,
+    html: `<p>enter this OTP to register your profile on codeJET <h1>${email_auth_otp}</h1></p>`,
   });
 
   console.log("completed up to here");
