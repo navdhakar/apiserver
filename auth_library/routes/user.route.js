@@ -41,6 +41,10 @@ router.post("/data_update", auth, async (req, res) => {
   // dob: [{ date: req.body.date, month: req.body.month, year: req.body.year }],
   // contact_no: req.body.contact_no,
   user.github_profile = req.body.github_profile;
+  user.instagram_profile = req.body.instagram;
+  user.twitter_profile = req.body.twitter;
+  user.facebook_profile = req.body.facebook;
+
   user.skills = req.body.skills;
   user.rating = 1;
   user.save();

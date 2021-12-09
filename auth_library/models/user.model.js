@@ -62,6 +62,15 @@ const UserSchema = new mongoose.Schema({
     minlength: 3,
     maxlength: 255,
   },
+  instagram_profile: {
+    type: String,
+  },
+  twitter_profile: {
+    type: String,
+  },
+  facebook_profile: {
+    type: String,
+  },
   profileImg: {
     type: String,
   },
