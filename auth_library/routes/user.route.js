@@ -26,7 +26,6 @@ router.get("/current", auth, async (req, res) => {
   const user = await User.findById(req.user._id).select("-password");
   // console.log(email);
   const project = await ProjectSelected.find({ email: user.email });
-  console.log(project);
   res.send(user);
 });
 router.post("/data_update", auth, async (req, res) => {
@@ -151,8 +150,8 @@ router.post("/new_user", async (req, res) => {
   // if (error) return res.status(400).send(error.details[0].message);
 
   // //find an existing user
-  // let user = await User.findOne({ email: req.body.email });
-  // if (user) return res.status(400).send("User already registered.");
+  let user = await User.findOne({ email: req.body.email });
+  if (user) return res.status(400).send({ response: "User already registered." });
 
   new_user_data = {
     name: req.body.name,
