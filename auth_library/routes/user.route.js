@@ -91,7 +91,7 @@ router.post("/profile_upload", auth, upload.single("profileImg"), async (req, re
   // console.log(req.file.filepath);
   // const file = req.file;
   const result = await cloudinary.uploader.upload(req.file.path);
-  console.log(result);
+  // console.log(result);
   // const url = req.protocol + "://" + req.get("host");
   user.profileImg = result.secure_url;
   user.cloudinaryID = result.public_id;
