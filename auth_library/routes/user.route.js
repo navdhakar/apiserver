@@ -144,7 +144,7 @@ router.post("/verify_email", async (req, res) => {
     });
   } else {
     console.log("otp didn't match");
-    res.send({ resposnse: "otp didn't match" });
+    res.status(400).send({ response: "OTP didn't match" });
   }
 });
 router.post("/new_user", async (req, res) => {

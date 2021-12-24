@@ -47,17 +47,7 @@ router.post("/selected_project", async (req, res) => {
   console.log(req.body.selected_project);
   //   const token = user.generateAuthToken();
   //   console.log(token);
-  res.send({
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    college_name: user.college_name,
-    college_year: user.college_year,
-    college_branch: user.college_branch,
-    // graduation_institute: req.body.graduation_institute,
-    // dob: [{ date: req.body.date, month: req.body.month, year: req.body.year }],
-    // contact_no: req.body.contact_no,
-  });
+  res.status(200).send({ response: "successfull" });
 });
 
 module.exports = router;
