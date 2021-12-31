@@ -3,6 +3,8 @@ require("dotenv").config();
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 async function email_verification(email) {
+  const email_auth_otp = Math.floor(1000 + Math.random() * 9000);
+
   const createTransporter = async () => {
     const oauth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, "https://developers.google.com/oauthplayground");
 
@@ -37,7 +39,6 @@ async function email_verification(email) {
     let emailTransporter = await createTransporter();
     await emailTransporter.sendMail(emailOptions);
   };
-  var email_auth_otp = Math.floor(1000 + Math.random() * 9000);
   console.log(email_auth_otp);
   sendEmail({
     from: "codejethq@gmail.com",
@@ -48,7 +49,6 @@ async function email_verification(email) {
   });
 
   console.log("completed up to here");
-
   return email_auth_otp;
 }
 module.exports = email_verification;

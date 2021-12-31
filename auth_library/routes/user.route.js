@@ -171,7 +171,7 @@ router.post("/new_user", async (req, res) => {
   };
 
   email_verification(req.body.email).then((value) => {
-    console.log(value);
+    console.log("generated " + value);
     generated_otp = value;
   });
   res.send({
