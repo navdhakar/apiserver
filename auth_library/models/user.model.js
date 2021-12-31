@@ -27,19 +27,19 @@ const UserSchema = new mongoose.Schema({
   college_name: {
     type: String,
     required: true,
-    minlength: 3,
+
     maxlength: 255,
   },
   college_year: {
     type: String,
     required: true,
-    minlength: 3,
+
     maxlength: 255,
   },
   college_branch: {
     type: String,
     required: true,
-    minlength: 3,
+
     maxlength: 255,
   },
 
@@ -59,7 +59,7 @@ const UserSchema = new mongoose.Schema({
   github_profile: {
     type: String,
     required: true,
-    minlength: 3,
+
     maxlength: 255,
   },
   instagram_profile: {
@@ -108,7 +108,7 @@ function validateUser(user) {
     // graduation_institute: Joi.string().min(3).max(255).required(),
     // dob: Joi.string().min(3).max(255).required(),
     // contact_no: Joi.string().min(3).max(255).required(),
-    github_profile: Joi.string().min(3).max(255).required(),
+    github_profile: Joi.string().max(255).required(),
     profileImg: Joi.string(),
 
     // group: Joi.string().min(3).max(255).required(),
