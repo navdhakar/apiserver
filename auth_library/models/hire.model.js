@@ -5,68 +5,60 @@ const mongoose = require("mongoose");
 
 //simple schema
 const HireSchema = new mongoose.Schema({
-  company_name: {
+  title: {
     type: String,
     // required: true,
-    minlength: 3,
-    maxlength: 50,
   },
-  email: {
-    type: String,
-    required: true,
-    minlength: 3,
-    maxlength: 50,
-  },
-  contact_no: {
-    type: Number,
-    required: true,
-    minlength: 3,
-    maxlength: 50,
-  },
-  project_title: {
-    type: String,
-    //required: true,
-    minlength: 5,
-    maxlength: 1000,
-    // unique: true,
-  },
-  project_description: {
-    type: String,
-    required: true,
-    minlength: 5,
-    maxlength: 1000,
-    // unique: true,
-  },
-  technology_required: {
-    type: String,
-    //required: true,
+  // email: {
+  //   type: String,
 
-    maxlength: 255,
-  },
-  time_limit: {
+  //   minlength: 3,
+  //   maxlength: 50,
+  // },
+  image: {
     type: String,
-    //required: true,
-    //minlength: 3,
-    maxlength: 255,
   },
-  budget: {
-    type: Number,
-    //required: true,
-    //minlength: 3,
-    maxlength: 255,
-  },
-  required_experience: {
+  // project_title: {
+  //   type: String,
+  //   //required: true,
+  //   minlength: 5,
+  //   maxlength: 1000,
+  //   // unique: true,
+  // },
+  blog_description: {
     type: String,
 
-    minlength: 3,
-    maxlength: 255,
+    // unique: true,
   },
-  service_required: {
+  // technology_required: {
+  //   type: String,
+  //   //required: true,
+
+  //   maxlength: 255,
+  // },
+  date: {
     type: String,
-    required: true,
+    //required: true,
     //minlength: 3,
-    maxlength: 255,
   },
+  // budget: {
+  //   type: Number,
+  //   //required: true,
+  //   //minlength: 3,
+  //   maxlength: 255,
+  // },
+  // required_experience: {
+  //   type: String,
+
+  //   minlength: 3,
+  //   maxlength: 255,
+  // },
+  // service_required: {
+  //   type: String,
+
+  //   //minlength: 3,
+  //   maxlength: 255,
+  // },
   //milestone needs to be added
   //give different access rights if admin or not
   isAdmin: Boolean,
@@ -83,16 +75,16 @@ const Hire = mongoose.model("Hire", HireSchema);
 //function to validate Hire
 function validateHire(Hire) {
   const schema = Joi.object({
-    company_name: Joi.string().min(3).max(50).required(),
-    email: Joi.string().min(3).max(50).required(),
-    contact_no: Joi.number().min(3).max(50).required(),
-    project_title: Joi.string().max(255),
-    project_description: Joi.string().min(3).max(1000),
-    technology_required: Joi.string().max(255),
-    time_limit: Joi.string().max(255),
-    budget: Joi.number().min(3).max(255).required(),
-    required_experience: Joi.string().min(3).max(255),
-    service_required: Joi.string().min(3).max(255).required(),
+    title: Joi.string(),
+    // email: Joi.string(),
+    image: Joi.number(),
+    // project_title: Joi.string().max(255),
+    blog_description: Joi.string(),
+    // technology_required: Joi.string(),
+    date: Joi.string(),
+    // budget: Joi.number(),
+    // required_experience: Joi.string(),
+    // service_required: Joi.string(),
   });
 
   return schema.validate(Hire);
